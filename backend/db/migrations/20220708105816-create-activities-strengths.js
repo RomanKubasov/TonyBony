@@ -1,20 +1,25 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('skills', {
+    await queryInterface.createTable('activities_strengths', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      skill: {
-        type: Sequelize.STRING
-      },
-      type_id: {
+      strength_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'types',
+          model: 'strengths',
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
+      },
+      activity_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'activities',
           key: 'id',
         },
         onDelete: 'CASCADE',
@@ -30,6 +35,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('skills');
+    await queryInterface.dropTable('activities_strengths');
   }
 };

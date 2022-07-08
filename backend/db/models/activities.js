@@ -4,9 +4,9 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class activities extends Model {
-    static associate({categories, skills}) {
+    static associate({categories, strengths}) {
       this.belongsTo(categories, {foreignKey: 'category_id'});
-      this.belongsToMany(skills, {through: 'activities_skills'});
+      this.belongsToMany(strengths, {through: 'activities_strengths'});
     }
   }
   activities.init({

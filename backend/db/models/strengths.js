@@ -3,18 +3,18 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class skills extends Model {
+  class strengths extends Model {
     static associate({types, activities}) {
       this.belongsTo(types, {foreignKey: 'type_id'});
-      this.belongsToMany(activities, {through: 'activities_skills'});
+      this.belongsToMany(activities, {through: 'activities_strengths'});
     }
   }
-  skills.init({
+  strengths.init({
     skill: DataTypes.STRING,
     type_id: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'skills',
+    modelName: 'strengths',
   });
-  return skills;
+  return strengths;
 };
