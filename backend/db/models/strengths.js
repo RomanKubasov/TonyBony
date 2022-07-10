@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   strengths.init({
-    skill: DataTypes.STRING,
+    strength: DataTypes.STRING,
     type_id: DataTypes.INTEGER
   }, {
     sequelize,
