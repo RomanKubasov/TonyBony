@@ -2,10 +2,11 @@ const express = require('express');
 const fetch = require('node-fetch');
 const app = express();
 const PORT = 3000;
-const param = 2;
+const num = 3;
 
-var query = `{
-  strengths (param: ${param}){
+const query = `
+  query strengthS($param: Int) {
+  strengths(param: $param) {
    id,
    strength,
    type_id,
@@ -23,7 +24,8 @@ async function startMe(){
     'Accept': 'application/json',
   },
   body: JSON.stringify({ 
-    query
+    query,
+    variables: {param: num},
   })
 });
 const r = await res.json();
